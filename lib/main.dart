@@ -12,7 +12,7 @@ var myApp1 = new Container(
     height: 100,
     color: Colors.grey[300]);
 
-var myApp = new Container(
+var myApp2 = new Container(
     child: new Center(
         child: new Container(
             child: new Text("hellow",
@@ -20,7 +20,39 @@ var myApp = new Container(
                 style:
                     new TextStyle(fontSize: 28, fontWeight: FontWeight.w900)),
             padding: EdgeInsets.all(16.0),
+            width: 200,
             decoration: new BoxDecoration(color: Colors.red[400]))),
-    width: 320.0,
-    height: 240.0,
     color: Colors.grey[300]);
+
+var myApp3 = new Container(
+    child: new Stack(
+      children: [
+        new Positioned(
+          child: Container(
+            child: new Text(
+              "he",
+              textDirection: TextDirection.ltr,
+            ),
+          ),
+          left: 100,
+          top: 20,
+        ),
+      ],
+      textDirection: TextDirection.ltr,
+    ),
+    color: Colors.grey[300]);
+var myApp = new Container(
+  child: new Center(
+    child: new Transform(
+      child: new Container(
+        child: new Text(
+          'hellow',
+          style: new TextStyle(fontSize: 30),
+          textDirection: TextDirection.ltr,
+        ),
+      ),
+      alignment: Alignment.center,
+      transform: new Matrix4.identity()..rotateZ(15 * 3.1416 / 180),
+    ),
+  ),
+);
