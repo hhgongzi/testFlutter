@@ -4,10 +4,10 @@ void main() {
   runApp(myApp);
 }
 
+var style = new TextStyle(fontSize: 28, fontWeight: FontWeight.w900);
 var myApp1 = new Container(
     child: new Text("Hellow,world12",
-        textDirection: TextDirection.ltr,
-        style: new TextStyle(fontSize: 28, fontWeight: FontWeight.w900)),
+        textDirection: TextDirection.ltr, style: style),
     width: 100,
     height: 100,
     color: Colors.grey[300]);
@@ -16,9 +16,7 @@ var myApp2 = new Container(
     child: new Center(
         child: new Container(
             child: new Text("hellow",
-                textDirection: TextDirection.ltr,
-                style:
-                    new TextStyle(fontSize: 28, fontWeight: FontWeight.w900)),
+                textDirection: TextDirection.ltr, style: style),
             padding: EdgeInsets.all(16.0),
             width: 200,
             decoration: new BoxDecoration(color: Colors.red[400]))),
