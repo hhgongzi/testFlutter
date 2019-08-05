@@ -1,10 +1,34 @@
+import 'dart:core';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(myApp);
+  runApp(new MyApp());
 }
 
-var style = new TextStyle(fontSize: 28, fontWeight: FontWeight.w900);
+var style = new TextStyle(fontSize: 28.0, fontWeight: FontWeight.w900);
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return HomeContent();
+  }
+}
+
+class HomeContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+      child: Text(
+        "hellow",
+        textDirection: TextDirection.ltr,
+        style: style,
+      ),
+    );
+  }
+}
+
+/*
 var myApp1 = new Container(
     child: new Text("Hellow,world12",
         textDirection: TextDirection.ltr, style: style),
@@ -44,7 +68,7 @@ var myApp = new Container(
     child: new Transform(
       child: new Container(
         child: new Text(
-          'hellow',
+          'hellow511R1',
           style: new TextStyle(fontSize: 30),
           textDirection: TextDirection.ltr,
         ),
@@ -54,3 +78,4 @@ var myApp = new Container(
     ),
   ),
 );
+*/
