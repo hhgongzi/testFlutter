@@ -1,81 +1,84 @@
-import 'dart:core';
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-void main() {
-  runApp(new MyApp());
-}
-
-var style = new TextStyle(fontSize: 28.0, fontWeight: FontWeight.w900);
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return HomeContent();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("flutter"),
+        ),
+        body: HomeContent(),
+      ),
+    );
+  }
+}
+
+class HomeContentImg extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: Image.network(
+          "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg",
+          alignment: Alignment.bottomCenter,
+          //   color: Colors.grey,
+          colorBlendMode: BlendMode.screen,
+          fit: BoxFit.cover,
+          repeat: ImageRepeat.noRepeat,
+        ),
+        width: 300,
+        height: 300,
+        decoration: BoxDecoration(color: Colors.blue),
+      ),
+    );
+  }
+}
+
+class HomeContentCirlImg extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 300,
+        height: 300,
+        decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(150),
+            image: DecorationImage(
+                image: NetworkImage(
+                    "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg"),
+                fit: BoxFit.cover)),
+      ),
+    );
+  }
+}
+
+class HomeContentClipOval extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: ClipOval(
+          //根据图形比例 生成圆形或椭圆形
+          child: Image.network(
+            "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg",
+          ),
+        ),
+      ),
+    );
   }
 }
 
 class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Center(
-      child: Text(
-        "hellow",
-        textDirection: TextDirection.ltr,
-        style: style,
-      ),
+        child: Container(
+            child: Image.asset("images/pic.png"),
+        ),
     );
   }
 }
-
-/*
-var myApp1 = new Container(
-    child: new Text("Hellow,world12",
-        textDirection: TextDirection.ltr, style: style),
-    width: 100,
-    height: 100,
-    color: Colors.grey[300]);
-
-var myApp2 = new Container(
-    child: new Center(
-        child: new Container(
-            child: new Text("hellow",
-                textDirection: TextDirection.ltr, style: style),
-            padding: EdgeInsets.all(16.0),
-            width: 200,
-            decoration: new BoxDecoration(color: Colors.red[400]))),
-    color: Colors.grey[300]);
-
-var myApp3 = new Container(
-    child: new Stack(
-      children: [
-        new Positioned(
-          child: Container(
-            child: new Text(
-              "he",
-              textDirection: TextDirection.ltr,
-            ),
-          ),
-          left: 100,
-          top: 20,
-        ),
-      ],
-      textDirection: TextDirection.ltr,
-    ),
-    color: Colors.grey[300]);
-var myApp = new Container(
-  child: new Center(
-    child: new Transform(
-      child: new Container(
-        child: new Text(
-          'hellow511R1',
-          style: new TextStyle(fontSize: 30),
-          textDirection: TextDirection.ltr,
-        ),
-      ),
-      alignment: Alignment.center,
-      transform: new Matrix4.identity()..rotateZ(15 * 3.1416 / 180),
-    ),
-  ),
-);
-*/
