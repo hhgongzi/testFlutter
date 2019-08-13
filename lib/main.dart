@@ -11,85 +11,60 @@ class MyApp extends StatelessWidget {
           title: Text("Flutter"),
         ),
         body: HomeContent(),
-        backgroundColor: Colors.grey,
       ),
     );
   }
 }
 
-class HomeContentPadding extends StatelessWidget {
-  //padding 组件
-  @override
-  Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      padding: EdgeInsets.all(5),
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.all(5),
-          child: Image.network(
-              'http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg',
-              fit: BoxFit.cover),
-        ),
-        Padding(
-          padding: EdgeInsets.all(5),
-          child: Image.network(
-              'http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg',
-              fit: BoxFit.cover),
-        ),
-        Padding(
-          padding: EdgeInsets.all(5),
-          child: Image.network(
-              'http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg',
-              fit: BoxFit.cover),
-        ),
-        Padding(
-          padding: EdgeInsets.all(5),
-          child: Image.network(
-              'http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg',
-              fit: BoxFit.cover),
-        ),
-      ],
-    );
-  }
-}
-
-class HomeContentFlex extends StatelessWidget {
+class HomeContentAspe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600,
-      width: 450,
-      color: Colors.pink,
-      //   child: Row(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center, //flex 横轴
-        crossAxisAlignment: CrossAxisAlignment.start, //flex 纵轴
-        children: <Widget>[
-          IconContainer(Icons.home, color: Colors.red, size: 40.0),
-          IconContainer(Icons.search, color: Colors.orange, size: 40.0),
-          IconContainer(Icons.dashboard, color: Colors.blue, size: 40.0),
-          IconContainer(Icons.face, color: Colors.green, size: 40.0),
-        ],
+      width: 400,
+      child: AspectRatio(
+        aspectRatio: 2 / 1,
+        child: Container(
+          color: Colors.red,
+        ),
       ),
     );
   }
 }
 
-class HomeContentFlexElement extends StatelessWidget {
+class HomeContentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return ListView(
       children: <Widget>[
-        IconContainer(Icons.dashboard, color: Colors.blue, size: 40.0),
-        IconContainer(Icons.edit, color: Colors.green, size: 40.0),
-        Expanded(
-          flex: 1,
-          child: IconContainer(Icons.home, color: Colors.red, size: 40.0),
+        Card(
+          margin: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              ListTile(
+                title: Text("张三"),
+                subtitle: Text("高级工程师"),
+              ),
+              ListTile(
+                title: Text("电话"),
+                subtitle: Text("185xxxx0765"),
+              )
+            ],
+          ),
         ),
-        Expanded(
-          flex: 2,
-          child: IconContainer(Icons.search, color: Colors.orange, size: 40.0),
+        Card(
+          margin: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              ListTile(
+                title: Text("张三"),
+                subtitle: Text("高级工程师"),
+              ),
+              ListTile(
+                title: Text("电话"),
+                subtitle: Text("185xxxx0765"),
+              )
+            ],
+          ),
         ),
       ],
     );
@@ -100,73 +75,38 @@ class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+        //动态列表使用map生成   
       children: <Widget>[
-        Container(
-            width: 100,
-          height: 200,
-          color: Colors.black,
-          child: Text("hellow"),
-        ),
-        Row(
-          children: <Widget>[
-            Expanded(
-              flex: 2,
-              child: Container(
-                  height: 180,
-                  padding: EdgeInsets.fromLTRB(0,0,10,0),
-                  child: Image.network(
+        Card(
+          margin: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              AspectRatio(
+                aspectRatio: 2,
+                child: Image.network(
                     "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg",
-                    fit: BoxFit.cover,
-                  )),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                height: 180,
-                child: ListView(
-                  children: <Widget>[
-                    Container(
-                      height: 85,
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                      child: Image.network(
-                        "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Container(
-                      height: 85,
-                      child: Image.network(
-                        "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ],
-                ),
+                    fit: BoxFit.cover),
               ),
-            )
-          ],
+              ListTile(
+                // leading: ClipOval(
+                //   child: Image.network(
+                //     "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg",
+                //     fit: BoxFit.cover,
+                //     height: 60,
+                //     width: 60,
+                //   ),
+                // ),
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg"),
+                ),
+                title: Text("xxxx"),
+                subtitle: Text("xxxxxxxxx"),
+              )
+            ],
+          ),
         )
       ],
-    );
-  }
-}
-
-class IconContainer extends StatelessWidget {
-  final double size;
-  final Color color;
-  final IconData icon;
-  IconContainer(this.icon, {this.color = Colors.white, this.size = 36.0});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 100,
-      color: color,
-      child: Icon(
-        icon,
-        size: size,
-        color: Colors.white,
-      ),
     );
   }
 }
