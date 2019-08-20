@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import '../pages/search.dart';
+import '../pages/middle.dart';
+import '../pages/finish.dart';
 
 final routes = {
-  "/search": (context, {arguments}) => SearchPage(arguments: arguments)
+  "/search": (context, {arguments}) => SearchPage(arguments: arguments),
+  "/middle":(context)=>MiddlePage(),
+  "/finish":(context)=>FinishPage(),
 };
 
 var OnGenerateRoute = (RouteSettings settings) {

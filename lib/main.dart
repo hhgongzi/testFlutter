@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         ),
         body: HomePage(),
       ),
-    //   initialRoute: '/search',
+      //   initialRoute: '/search',
       onGenerateRoute: OnGenerateRoute,
       //   routes: {"/search": (context) => SearchPage("router 命名路由")},
     );
@@ -33,6 +33,8 @@ class HomePage extends StatelessWidget {
             // Navigator.of(context).push(
             //     MaterialPageRoute(builder: (context) => SearchPage("普通路由")));
             // Navigator.of(context).pop();返回
+             Navigator.pushNamed(context, "/middle");
+            // Navigator.of(context).pushReplacementNamed("/middle");//替换当前页面
           },
         ),
         SizedBox(
