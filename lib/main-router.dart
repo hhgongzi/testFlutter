@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/serch.dart';
+import 'pages/search.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
           child: Text("搜索"),
           onPressed: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => SearchPage("页面传值")));
+                MaterialPageRoute(builder: (context) => SearchPage(arguments:"页面传值")));
             // Navigator.of(context).pop();返回
           },
         ),
