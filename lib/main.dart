@@ -8,73 +8,124 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('appbar'),
-        ),
-        body: Text("appbar body"),
-        // drawer: Drawer(
-        //     child: Text("drawer"),
-        // ),
-        // endDrawer: Drawer(
-        //     child: Text('end drawer'),
-        // ),
-        drawer: Drawer(
-          child: Column(
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("flutter"),
+      ),
+      body: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            //   DrawerHeader(
-            //     child: Text("header"),
-            //     decoration: BoxDecoration(color: Colors.yellow),
-            //   ),
-            //   Row(
-            //     children: <Widget>[
-            //       Expanded(
-            //         child: DrawerHeader(
-            //           child: Text("自定义header"),
-            //           decoration: BoxDecoration(
-            //             //   color: Colors.green,
-            //               image: DecorationImage(
-            //                   image: NetworkImage(
-            //                       "http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg"))),
-            //         ),
-            //       )
-            //     ],
-            //   ),
-            Row(
-                children: <Widget>[
-                    Expanded(
-                        child: UserAccountsDrawerHeader(
-                            accountName: Text("head"),
-                            accountEmail: Text("xxx@163.com"),
-                            currentAccountPicture: CircleAvatar(
-                                backgroundImage: NetworkImage("http://pic13.nipic.com/20110409/7119492_114440620000_2.jpg"),
-                            ),
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: NetworkImage("http://img95.699pic.com/photo/50029/9094.jpg_wh860.jpg")
-                                )
-                            ),
-                            otherAccountsPictures: <Widget>[],
-                        ),
-                    )
-                ],
-            ),
-              ListTile(
-                leading: CircleAvatar(
-                  child: Icon(Icons.home),
-                ),
-                title: Text("home"),
-              ),
-              Divider(), //线
-              ListTile(
-                leading: CircleAvatar(
-                  child: Icon(Icons.settings),
-                ),
-                title: Text("settings"),
+              RaisedButton(
+                child: Text("普通按钮"),
+                color: Colors.blue,
+                textColor: Colors.white,
+                elevation: 10, //阴影
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                onPressed: () {
+                  print("普通按钮");
+                },
               ),
             ],
           ),
-        ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  height: 50,
+                  margin: EdgeInsets.all(10),
+                  child: RaisedButton(
+                    child: Text("自适应按钮"),
+                    color: Colors.blue,
+                    textColor: Colors.white,
+                    elevation: 10, //阴影
+                    splashColor: Colors.grey, //长按 水波效果
+                    onPressed: () {
+                      print("自适应按钮");
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(
+                child: Text("flatbutton"),
+                onPressed: () {
+                  print("flatbutton");
+                },
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              OutlineButton(
+                child: Text("flatbutton"),
+                onPressed: () {
+                  print("OutlineButton");
+                },
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {
+                  print("IconButton");
+                },
+              )
+            ],
+          ),
+          ButtonBar(
+            children: <Widget>[
+              RaisedButton(
+                child: Text("buttonbar"),
+                onPressed: () {},
+              ),
+              FloatingActionButton(
+                child: Text("FloatingActionButton"),
+                onPressed: () {},
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+//自定义按钮
+class MyButton extends StatelessWidget {
+  final text;
+  final pressed;
+  const MyButton({Key key, this.text, this.pressed}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: 100,
+      child: RaisedButton(
+        child: Text(text),
+        onPressed: pressed,
       ),
     );
   }
